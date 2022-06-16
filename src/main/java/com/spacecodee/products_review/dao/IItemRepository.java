@@ -11,10 +11,9 @@ import java.util.List;
 public interface IItemRepository extends JpaRepository<Item, Long> {
 
     @Query(
-            value = "SELECT p.product_name, r.review " +
-                    "FROM item i " +
-                    "         INNER JOIN review r on i.id_review = r.id_review" +
-                    "         INNER JOIN product p on i.id_product = p.id_product" +
+            value = "SELECT i.id, i.item_name, i.id_review, i.id_user " +
+                    "FROM item i" +
+                    "         INNER JOIN review r on i.id_review = r.id_review " +
                     "WHERE r.review < ?1 " +
                     "ORDER BY r.review",
             nativeQuery = true

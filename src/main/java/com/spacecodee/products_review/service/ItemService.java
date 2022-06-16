@@ -17,7 +17,7 @@ public class ItemService {
     }
 
     public List<Item> getTitles() {
-        return (List<Item>) this.iItemRepository.findAll();
+        return this.iItemRepository.findAll();
     }
 
     public List<String> getTitles(Double rating) {
@@ -25,8 +25,15 @@ public class ItemService {
         List<Item> itemList = this.iItemRepository.findItemsWithAverageRatingLowerThan(rating);
 
         for (Item item : itemList) {
+            System.out.println("item = " + item);
+            if (item.getIdReview() == null) {
+                item.getIdReview().setReview(0);
+            }
+
             listTitles.add(item.getItemName());
         }
+
+        System.out.println("listTitles = " + listTitles);
 
         return listTitles;
     }

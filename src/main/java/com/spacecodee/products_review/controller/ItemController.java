@@ -2,7 +2,7 @@ package com.spacecodee.products_review.controller;
 
 import com.spacecodee.products_review.dao.model.Item;
 import com.spacecodee.products_review.service.ItemService;
-import lombok.Getter;
+import org.hibernate.annotations.CollectionId;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
